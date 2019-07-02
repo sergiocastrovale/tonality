@@ -1,6 +1,6 @@
 # tonality
 
-A music theory playground built with Nuxt.js. Uses Typescript with nuxt-property-decorator, TailWind and tonal.js.
+A music theory playground built with Nuxt.js, TailWind and tonal.js.
 
 ## Build Setup
 
