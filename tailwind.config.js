@@ -1,7 +1,19 @@
-// See default config https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        sans: [
+          'Lato',
+          ...defaultTheme.fontFamily.sans,
+        ]
+      },
+    }
   },
-  variants: {}
+  variants: {},
+  prefix: '',
+  important: false,
+  separator: ':',
+  plugins: []
 }

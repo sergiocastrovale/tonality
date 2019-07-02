@@ -1,9 +1,6 @@
 
 export default {
   mode: 'universal',
-  /*
-  ** Headers of the page
-  */
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -15,34 +12,23 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  /*
-  ** Customize the progress-bar color
-  */
   loading: { color: '#fff' },
-  /*
-  ** Global CSS
-  */
   css: [
     '~/assets/css/tailwind.css'
   ],
-  /*
-  ** Plugins to load before mounting the App
-  */
   plugins: [
   ],
-  /*
-  ** Nuxt.js modules
-  */
   modules: [
+    'nuxt-webfontloader'
   ],
-  /*
-  ** Build configuration
-  */
+  webfontloader: {
+    google: {
+      families: ['Lato:400,700']
+    }
+  },
   build: {
     babel: {
       plugins: [
-        ['@babel/plugin-proposal-decorators', { legacy: true }],
-        ['@babel/plugin-proposal-class-properties', { loose: true }]
       ]
     },
     postcss: {
@@ -50,9 +36,6 @@ export default {
         tailwindcss: './tailwind.config.js'
       }
     },
-    /*
-    ** You can extend webpack config here
-    */
     extend(config, ctx) {
     }
   }
