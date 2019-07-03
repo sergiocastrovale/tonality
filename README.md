@@ -32,3 +32,7 @@ These are highly recommended for proper development on this project:
 * Vetur
 * ESLint and stylelint
 * Tailwind CSS IntelliSense
+
+### TailwindCSS theme usage
+
+For simplicity's sake, I'm basing the project on Tailwind's default theme. [Here are the default configuration values for it](https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js#L5).

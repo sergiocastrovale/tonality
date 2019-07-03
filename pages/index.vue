@@ -6,7 +6,9 @@
 
     <div class="flex-grow">
       <div class="container mx-auto px-4">
-        <Keyboard />
+        <Keyboard @played="addPlayedKey" />
+
+        <Score :keys="keys" />
       </div>
     </div>
   </div>
@@ -14,14 +16,21 @@
 
 <script>
 import Keyboard from '~/components/Keyboard'
+import Score from '~/components/Score'
 
 export default {
   components: {
-    Keyboard
+    Keyboard,
+    Score
+  },
+  data: () => ({
+    keys: []
+  }),
+  methods: {
+    addPlayedKey (key) {
+      this.keys.push(key)
+    }
   }
 }
 </script>
 
-<style lang="postcss" scoped>
-
-</style>

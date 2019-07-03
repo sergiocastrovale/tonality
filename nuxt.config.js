@@ -14,7 +14,7 @@ export default {
   },
   loading: { color: '#fff' },
   css: [
-    '@/assets/css/tailwind.css'
+    '~/assets/scss/main.scss'
   ],
   plugins: [
   ],
@@ -37,24 +37,16 @@ export default {
     },
     postcss: {
       plugins: {
-        tailwindcss: './tailwind.config.js',
-        cssnano: {
+        'tailwindcss': './tailwind.config.js',
+        'postcss-import': {
+          path: ["../assets/scss", "../components/@scss", "../components"]
+        },
+        'cssnano': {
           preset: 'default',
           discardComments: { removeAll: true },
           zIndex: false
         }
       }
-    },
-    extend(config, ctx) {
-      // // Run ESLint on save
-      // if (ctx.isDev && ctx.isClient) {
-      //   config.module.rules.push({
-      //     enforce: 'pre',
-      //     test: /\.(js|vue)$/,
-      //     loader: 'eslint-loader',
-      //     exclude: /(node_modules)/
-      //   })
-      // }
     }
   }
 }

@@ -9,8 +9,8 @@ module.exports = {
     sourceType: 'module'
   },
   extends: [
-    "plugin:nuxt/recommended",
-    "plugin:vue/essential"
+    "eslint:recommended",
+    "plugin:vue/recommended"
   ],
   rules: {
     'no-console': 'off',
