@@ -14,29 +14,47 @@ export default {
   },
   loading: { color: '#fff' },
   css: [
-    '~/assets/css/tailwind.css'
+    '@/assets/css/tailwind.css'
   ],
   plugins: [
   ],
   modules: [
-    'nuxt-webfontloader'
+    'nuxt-purgecss',
   ],
+  purgeCSS: {
+
+  },
   webfontloader: {
     google: {
       families: ['Lato:400,700']
     }
   },
   build: {
+    extractCSS: true,
     babel: {
       plugins: [
       ]
     },
     postcss: {
       plugins: {
-        tailwindcss: './tailwind.config.js'
+        tailwindcss: './tailwind.config.js',
+        cssnano: {
+          preset: 'default',
+          discardComments: { removeAll: true },
+          zIndex: false
+        }
       }
     },
     extend(config, ctx) {
+      // // Run ESLint on save
+      // if (ctx.isDev && ctx.isClient) {
+      //   config.module.rules.push({
+      //     enforce: 'pre',
+      //     test: /\.(js|vue)$/,
+      //     loader: 'eslint-loader',
+      //     exclude: /(node_modules)/
+      //   })
+      // }
     }
   }
 }

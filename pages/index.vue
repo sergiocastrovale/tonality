@@ -38,7 +38,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="postcss" scoped>
 html {
   font-family: @apply font-sans;
 }
