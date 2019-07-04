@@ -9,10 +9,11 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "process": "pm2 start ./node_modules/nuxt/bin/nuxt-start -i max --attach",
+    "process": "pm2 start node_modules/nuxt/bin/nuxt.js --name='tonality'",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
+    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
   },
   "dependencies": {
     "@tonaljs/chord-dictionary": "^3.2.1",
@@ -34,6 +35,7 @@
     "babel-plugin-require-context-hook": "^1.0.0",
     "babel-preset-vue": "^2.0.2",
     "eslint": "^6.0.1",
+    "eslint-plugin-vue": "^5.2.3",
     "jest": "^24.1.0",
     "node-sass": "^4.12.0",
     "nodemon": "^1.18.9",
