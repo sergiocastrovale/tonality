@@ -16,14 +16,11 @@ export default {
   css: [
     '~/assets/scss/main.scss'
   ],
-  plugins: [
-  ],
+  plugins: [],
   modules: [
     'nuxt-purgecss',
   ],
-  purgeCSS: {
-
-  },
+  purgeCSS: {},
   webfontloader: {
     google: {
       families: ['Lato:400,700']
@@ -32,8 +29,7 @@ export default {
   build: {
     extractCSS: true,
     babel: {
-      plugins: [
-      ]
+      plugins: []
     },
     postcss: {
       plugins: {

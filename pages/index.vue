@@ -8,7 +8,7 @@
       <div class="container mx-auto px-4">
         <Keyboard @played="addPlayedKey" />
 
-        <Score :keys="keys" />
+        <Score :notes="notes" />
       </div>
     </div>
   </div>
@@ -24,11 +24,13 @@ export default {
     Score
   },
   data: () => ({
-    keys: []
+    notes: []
   }),
   methods: {
     addPlayedKey (key) {
-      this.keys.push(key)
+      if (!this.notes.find(n => n.label === key.label)) {
+        this.notes.push(key)
+      }
     }
   }
 }

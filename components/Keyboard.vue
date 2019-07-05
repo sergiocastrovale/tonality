@@ -5,7 +5,7 @@
         v-for="(key, i) in keys"
         :key="i"
         class="key"
-        :class="[key.color, 'key-' + i, { 'playing' : playing === key.note }]"
+        :class="[key.color, 'key-' + i, { 'playing' : playing === (key.note + key.index) }]"
         @click.stop="play(key)"
       >
         {{ key.label }}
@@ -22,35 +22,35 @@ export default {
     instrument: null,
     ac: null,
     keys: [
-      { color: 'white', label: 'C', note: 'c4', frequency: 60 },
-      { color: 'black', label: 'D♭', note: 'db4', frequency: 61 },
-      { color: 'white', label: 'D', note: 'd4', frequency: 62 },
-      { color: 'black', label: 'E♭', note: 'eb4', frequency: 63 },
-      { color: 'white', label: 'E', note: 'e4', frequency: 64 },
-      { color: 'white', label: 'F', note: 'f4', frequency: 65 },
-      { color: 'black', label: 'G♭', note: 'gb4', frequency: 66 },
-      { color: 'white', label: 'G', note: 'g4', frequency: 67 },
-      { color: 'black', label: 'A♭', note: 'ab4', frequency: 68 },
-      { color: 'white', label: 'A', note: 'a4', frequency: 69 },
-      { color: 'black', label: 'B♭', note: 'bb4', frequency: 70 },
-      { color: 'white', label: 'B', note: 'b4', frequency: 71 },
-      { color: 'white', label: 'C', note: 'c5', frequency: 72 },
-      { color: 'black', label: 'D♭', note: 'db5', frequency: 73 },
-      { color: 'white', label: 'D', note: 'd5', frequency: 74 },
-      { color: 'black', label: 'E♭', note: 'eb5', frequency: 75 },
-      { color: 'white', label: 'E', note: 'e5', frequency: 76 },
-      { color: 'white', label: 'F', note: 'f5', frequency: 77 },
-      { color: 'black', label: 'G♭', note: 'gb5', frequency: 78 },
-      { color: 'white', label: 'G', note: 'g5', frequency: 79 },
-      { color: 'black', label: 'A♭', note: 'ab5', frequency: 80 },
-      { color: 'white', label: 'A', note: 'a5', frequency: 81 },
-      { color: 'black', label: 'B♭', note: 'bb5', frequency: 82 },
-      { color: 'white', label: 'B', note: 'b5', frequency: 83 },
-      { color: 'white', label: 'C', note: 'c6', frequency: 84 }
+      { color: 'white', index: 4, label: 'C', note: 'C', frequency: 60 },
+      { color: 'black', index: 4, label: 'D♭', note: 'Db', frequency: 61 },
+      { color: 'white', index: 4, label: 'D', note: 'D', frequency: 62 },
+      { color: 'black', index: 4, label: 'E♭', note: 'Eb', frequency: 63 },
+      { color: 'white', index: 4, label: 'E', note: 'E', frequency: 64 },
+      { color: 'white', index: 4, label: 'F', note: 'F', frequency: 65 },
+      { color: 'black', index: 4, label: 'G♭', note: 'Gb', frequency: 66 },
+      { color: 'white', index: 4, label: 'G', note: 'G', frequency: 67 },
+      { color: 'black', index: 4, label: 'A♭', note: 'Ab', frequency: 68 },
+      { color: 'white', index: 4, label: 'A', note: 'A', frequency: 69 },
+      { color: 'black', index: 4, label: 'B♭', note: 'Bb', frequency: 70 },
+      { color: 'white', index: 4, label: 'B', note: 'B', frequency: 71 },
+      { color: 'white', index: 5, label: 'C', note: 'C', frequency: 72 },
+      { color: 'black', index: 5, label: 'D♭', note: 'Db', frequency: 73 },
+      { color: 'white', index: 5, label: 'D', note: 'D', frequency: 74 },
+      { color: 'black', index: 5, label: 'E♭', note: 'Eb', frequency: 75 },
+      { color: 'white', index: 5, label: 'E', note: 'E', frequency: 76 },
+      { color: 'white', index: 5, label: 'F', note: 'F', frequency: 77 },
+      { color: 'black', index: 5, label: 'G♭', note: 'Gb', frequency: 78 },
+      { color: 'white', index: 5, label: 'G', note: 'G', frequency: 79 },
+      { color: 'black', index: 5, label: 'A♭', note: 'Ab', frequency: 80 },
+      { color: 'white', index: 5, label: 'A', note: 'A', frequency: 81 },
+      { color: 'black', index: 5, label: 'B♭', note: 'Bb', frequency: 82 },
+      { color: 'white', index: 5, label: 'B', note: 'B', frequency: 83 },
+      { color: 'white', index: 6, label: 'C', note: 'C', frequency: 84 }
     ],
     playing: '',
     playerTimer: null,
-    noteDuration: 750
+    noteDuration: 300
   }),
   mounted () {
     this.setAudio()
@@ -59,10 +59,11 @@ export default {
   methods: {
     play (key) {
       if (this.instrument && this.ac) {
+        this.$emit('played', key)
+
         clearTimeout(this.playerTimer)
 
-        this.$emit('played', key)
-        this.playing = key.note
+        this.playing = key.note + key.index
         this.instrument.play(key.frequency)
 
         this.playerTimer = setTimeout(() => {
@@ -74,8 +75,8 @@ export default {
       }
     },
     setAudio () {
-      const AudioContext = window.AudioContext || window.webkitAudioContext || false
-      this.ac = new AudioContext || new webkitAudioContext
+      const AudioContext = window.AudioContext || false
+      this.ac = new AudioContext
     },
     async setInstrument (instrument = 'acoustic_grand_piano') {
       this.instrument = await Soundfont.instrument(this.ac, `https://raw.githubusercontent.com/sergiocastrovale/midi-js-soundfonts/gh-pages/MusyngKite/${instrument}-mp3.js`)
