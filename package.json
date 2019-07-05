@@ -20,7 +20,6 @@
     "@tonaljs/midi": "^3.2.1",
     "@tonaljs/note": "^3.2.1",
     "@tonaljs/pcset": "^3.2.1",
-    "node-vexflow": "^0.1.2",
     "nuxt": "^2.0.0",
     "soundfont-player": "^0.11.0",
     "vexflow": "^1.2.89"
