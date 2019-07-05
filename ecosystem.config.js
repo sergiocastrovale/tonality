@@ -5,10 +5,9 @@ module.exports = {
       instances : 'max',
       script    : './node_modules/nuxt/bin/nuxt.js',
       env: {
-        NODE_ENV: "development",
-      },
-      env_production: {
-        NODE_ENV: "production",
+        'HOST': '0.0.0.0',
+        'PORT': 3000,
+        'NODE_ENV': 'production'
       }
   }]
 };
