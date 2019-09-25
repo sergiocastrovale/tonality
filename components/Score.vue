@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div ref="score"></div>
   </div>
 </template>

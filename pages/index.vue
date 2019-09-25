@@ -1,11 +1,9 @@
 <template>
+  <div class="container mx-auto px-4">
+    <Keyboard @played="addPlayedKey" />
 
-    <div class="container mx-auto px-4">
-      <Keyboard @played="addPlayedKey" />
-
-      <Score :notes="notes" />
-    </div>
-
+    <Score :notes="notes" />
+  </div>
 </template>
 
 <script>
@@ -29,4 +27,3 @@ export default {
   }
 }
 </script>
-

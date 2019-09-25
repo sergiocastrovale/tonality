@@ -37,11 +37,11 @@ export default {
   data: () => ({
     isHidden: true
   }),
-    methods: {
+  methods: {
     toggleIsHidden () {
       this.isHidden = !this.isHidden
     }
-  },
+  }
 }
 </script>
 

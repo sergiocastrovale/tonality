@@ -1,7 +1,9 @@
 <template>  
-  <div>
+  <div class="flex h-screen flex-col">
     <Header/>
-    <nuxt/>
+    <div class="flex-grow">
+      <nuxt/>
+    </div>
     <Footer/>
   </div>
 </template>
