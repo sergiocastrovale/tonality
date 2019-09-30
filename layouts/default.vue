@@ -1,8 +1,24 @@
-<template>
-  <div>
-    <nuxt />
+<template>  
+  <div class="flex h-screen flex-col">
+    <Header/>
+    <div class="flex-grow">
+      <nuxt/>
+    </div>
+    <Footer/>
   </div>
 </template>
+
+<script>
+import Header from '~/components/Header'
+import Footer from '~/components/Footer'
+
+export default {
+  components: {
+    Header,
+    Footer
+  },
+}
+</script>
 
 <style>
 html {
